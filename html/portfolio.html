@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InvestTrack - Portfolio</title>
+  <link rel="stylesheet" href="../css/portfolio.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <span class="logo-icon">📈</span> InvestTrack
+    </div>
+    
+    <ul class="nav-menu">
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="portfolio.html" class="active">Portfolio</a></li>
+      <li><a href="watchlist.html">Watchlist</a></li>
+      <li><a href="reports.html">Reports</a></li>
+    </ul>
+    
+    <div class="navbar-right">
+      <div class="nav-item notifications">
+        <span>🔔</span>
+      </div>
+      <div class="nav-item user-profile">
+        <div class="user-avatar">JD</div>
+        <span>John Doe</span>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="container">
+    <div class="dashboard-header">
+      <h1 class="dashboard-title">My Portfolio</h1>
+      <div class="dashboard-actions">
+        <button class="action-btn" id="refresh-btn">Refresh Data</button>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">Portfolio Summary</h2>
+      </div>
+      
+      <div class="portfolio-summary">
+        <div class="summary-item">
+          <div class="summary-label">Current Value</div>
+          <div class="summary-value">₹15,42,350</div>
+          <div class="summary-change positive">+₹12,350 (1.8%)</div>
+        </div>
+        
+        <div class="summary-item">
+          <div class="summary-label">Invested Amount</div>
+          <div class="summary-value">₹14,30,000</div>
+        </div>
+        
+        <div class="summary-item">
+          <div class="summary-label">Overall Returns</div>
+          <div class="summary-value">₹1,12,350</div>
+          <div class="summary-change positive">+7.86%</div>
+        </div>
+        
+        <div class="summary-item">
+          <div class="summary-label">Today's Change</div>
+          <div class="summary-value">₹8,250</div>
+          <div class="summary-change positive">+0.54%</div>
+        </div>
+      </div>
+      
+      <div class="chart-container">
+        <div class="chart-placeholder">Portfolio performance chart will be displayed here</div>
+      </div>
+      
+      <div class="portfolio-allocation">
+        <div class="allocation-chart">
+          <div class="chart-placeholder">Asset allocation pie chart will be displayed here</div>
+        </div>
+        
+        <div class="legend">
+          <h3>Asset Allocation</h3>
+          <div class="legend-item">
+            <div class="legend-color" style="background-color: #4e73df;"></div>
+            <div>
+              <div>Equity</div>
+              <div>65% (₹10,02,527)</div>
+            </div>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color" style="background-color: #1cc88a;"></div>
+            <div>
+              <div>Mutual Funds</div>
+              <div>25% (₹3,85,588)</div>
+            </div>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color" style="background-color: #36b9cc;"></div>
+            <div>
+              <div>ETFs</div>
+              <div>7% (₹1,07,965)</div>
+            </div>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color" style="background-color: #f6c23e;"></div>
+            <div>
+              <div>Bonds</div>
+              <div>3% (₹46,270)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">Holdings</h2>
+      </div>
+      
+      <div class="tabs">
+        <div class="tab active" data-tab="all">All Holdings</div>
+        <div class="tab" data-tab="stocks">Stocks</div>
+        <div class="tab" data-tab="mutual-funds">Mutual Funds</div>
+        <div class="tab" data-tab="etfs">ETFs</div>
+        <div class="tab" data-tab="bonds">Bonds</div>
+      </div>
+      
+      <div class="filter-bar">
+        <div class="filter-group">
+          <span class="filter-label">Broker:</span>
+          <select class="filter-select" id="broker-filter">
+            <option value="all">All Brokers</option>
+            <option value="angel">Angel One</option>
+            <option value="zerodha">Zerodha</option>
+            <option value="hdfc">HDFC Securities</option>
+            <option value="icici">ICICI Direct</option>
+          </select>
+        </div>
+        
+        <div class="filter-group">
+          <span class="filter-label">Sort By:</span>
+          <select class="filter-select" id="sort-filter">
+            <option value="alpha">Alphabetical</option>
+            <option value="value">Current Value</option>
+            <option value="returns">Returns %</option>
+            <option value="change">Day Change %</option>
+          </select>
+        </div>
+        
+        <div class="search-box">
+          <input type="text" class="search-input" placeholder="Search holdings..." id="search-input">
+        </div>
+      </div>
+      
+      <!-- Tab content for All Holdings -->
+      <div class="tab-content active" id="all-content">
+        <table>
+          <thead>
+            <tr>
+              <th>Instrument</th>
+              <th>Broker</th>
+              <th>Quantity</th>
+              <th>Avg. Price</th>
+              <th>Current Price</th>
+              <th>Current Value</th>
+              <th>Total Returns</th>
+              <th>Day Change</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Stocks -->
+            <tr>
+              <td>
+                <div class="stock-name">
+                  <div class="stock-icon">RIL</div>
+                  <div>
+                    <div>Reliance Industries</div>
+                    <div class="stock-code">NSE: RELIANCE</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="broker-tag">Angel One</span></td>
+              <td>20</td>
+              <td>₹2,340.50</td>
+              <td>₹2,420.75</td>
+              <td>₹48,415.00</td>
+              <td class="positive">+₹1,605.00 (+3.43%)</td>
+              <td class="positive">+0.65%</td>
+              <td class="actions-cell">
+                <button class="action-btn">Details</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="stock-name">
+                  <div class="stock-icon">TCS</div>
+                  <div>
+                    <div>Tata Consultancy Services</div>
+                    <div class="stock-code">NSE: TCS</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="broker-tag">Zerodha</span></td>
+              <td>10</td>
+              <td>₹3,450.25</td>
+              <td>₹3,510.80</td>
+              <td>₹35,108.00</td>
+              <td class="positive">+₹605.50 (+1.76%)</td>
+              <td class="negative">-0.22%</td>
+              <td class="actions-cell">
+                <button class="action-btn">Details</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="stock-name">
+                  <div class="stock-icon">HDFC</div>
+                  <div>
+                    <div>HDFC Bank</div>
+                    <div class="stock-code">NSE: HDFCBANK</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="broker-tag">HDFC Securities</span></td>
+              <td>30</td>
+              <td>₹1,670.40</td>
+              <td>₹1,720.25</td>
+              <td>₹51,607.50</td>
+              <td class="positive">+₹1,495.50 (+2.99%)</td>
+              <td class="positive">+0.82%</td>
+              <td class="actions-cell">
+                <button class="action-btn">Details</button>
+              </td>
+            </tr>
+            
+            <!-- Mutual Funds -->
+            <tr>
+              <td>
+                <div class="stock-name">
+                  <div class="stock-icon">MF</div>
+                  <div>
+                    <div>Axis Bluechip Fund</div>
+                    <div class="stock-code">Large Cap Fund</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="broker-tag">Angel One</span></td>
+              <td>850 units</td>
+              <td>₹42.75</td>
+              <td>₹45.30</td>
+              <td>₹38,505.00</td>
+              <td class="positive">+₹2,167.50 (+5.97%)</td>
+              <td class="positive">+0.42%</td>
+              <td class="actions-cell">
+                <button class="action-btn">Details</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="stock-name">
+                  <div class="stock-icon">MF</div>
+                  <div>
+                    <div>Mirae Asset Emerging Bluechip</div>
+                    <div class="stock-code">Mid Cap Fund</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="broker-tag">ICICI Direct</span></td>
+              <td>1200 units</td>
+              <td>₹85.40</td>
+              <td>₹92.75</td>
+              <td>₹111,300.00</td>
+              <td class="positive">+₹8,820.00 (+8.61%)</td>
+              <td class="positive">+1.20%</td>
+              <td class="actions-cell">
+                <button class="action-btn">Details</button>
+              </td>
+            </tr>
+            
+            <!-- ETFs -->
+            <tr>
+              <td>
+                <div class="stock-name">
+                  <div class="stock-icon">ETF</div>
+                  <div>
+                    <div>Nippon India ETF Nifty BeES</div>
+                    <div class="stock-code">NSE: NIFTYBEES</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="broker-tag">Zerodha</span></td>
+              <td>200</td>
+              <td>₹185.50</td>
+              <td>₹192.80</td>
+              <td>₹38,560.00</td>
+              <td class="positive">+₹1,460.00 (+3.93%)</td>
+              <td class="positive">+0.35%</td>
+              <td class="actions-cell">
+                <button class="action-btn">Details</button>
+              </td>
+            </tr>
+            
+            <!-- Bonds -->
+            <tr>
+              <td>
+                <div class="stock-name">
+                  <div class="stock-icon">BND</div>
+                  <div>
+                    <div>7.75% Govt. of India 2035</div>
+                    <div class="stock-code">Government Bond</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="broker-tag">HDFC Securities</span></td>
+              <td>5</td>
+              <td>₹9,800.00</td>
+              <td>₹9,850.00</td>
+              <td>₹49,250.00</td>
+              <td class="positive">+₹250.00 (+0.51%)</td>
+              <td class="neutral">0.00%</td>
+              <td class="actions-cell">
+                <button class="action-btn">Details</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <div class="pagination">
+          <div class="page-item"><button class="page-link">Previous</button></div>
+          <div class="page-item"><button class="page-link active">1</button></div>
+          <div class="page-item"><button class="page-link">2</button></div>
+          <div class="page-item"><button class="page-link">3</button></div>
+          <div class="page-item"><button class="page-link">Next</button></div>
+        </div>
+      </div>
+      
+      <!-- Tab content for Stocks, Mutual Funds, ETFs, and Bonds (initially hidden) -->
+      <div class="tab-content" id="stocks-content">
+        <!-- Stock-specific content would go here -->
+        <table>
+          <thead>
+            <tr>
+              <th>Stock</th>
+              <th>Broker</th>
+              <th>Quantity</th>
+              <th>Avg. Price</th>
+              <th>Current Price</th>
+              <th>Current Value</th>
+              <th>Total Returns</th>
+              <th>Day Change</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="stock-name">
+                  <div class="stock-icon">RIL</div>
+                  <div>
+                    <div>Reliance Industries</div>
+                    <div class="stock-code">NSE: RELIANCE</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="broker-tag">Angel One</span></td>
+              <td>20</td>
+              <td>₹2,340.50</td>
+              <td>₹2,420.75</td>
+              <td>₹48,415.00</td>
+              <td class="positive">+₹1,605.00 (+3.43%)</td>
+              <td class="positive">+0.65%</td>
+              <td class="actions-cell">
+                <button class="action-btn">Details</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="stock-name">
+                  <div class="stock-icon">TCS</div>
+                  <div>
+                    <div>Tata Consultancy Services</div>
+                    <div class="stock-code">NSE: TCS</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="broker-tag">Zerodha</span></td>
+              <td>10</td>
+              <td>₹3,450.25</td>
+              <td>₹3,510.80</td>
+              <td>₹35,108.00</td>
+              <td class="positive">+₹605.50 (+1.76%)</td>
+              <td class="negative">-0.22%</td>
+              <td class="actions-cell">
+                <button class="action-btn">Details</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="stock-name">
+                  <div class="stock-icon">HDFC</div>
+                  <div>
+                    <div>HDFC Bank</div>
+                    <div class="stock-code">NSE: HDFCBANK</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="broker-tag">HDFC Securities</span></td>
+              <td>30</td>
+              <td>₹1,670.40</td>
+              <td>₹1,720.25</td>
+              <td>₹51,607.50</td>
+              <td class="positive">+₹1,495.50 (+2.99%)</td>
+              <td class="positive">+0.82%</td>
+              <td class="actions-cell">
+                <button class="action-btn">Details</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="tab-content" id="mutual-funds-content">
+        <!-- Mutual Fund-specific content would go here -->
+        <table>
+          <thead>
+            <tr>
+              <th>Mutual Fund</th>
+              <th>Broker</th>
+              <th>Units</th>
+              <th>Avg. NAV</th>
+              <th>Current NAV</th>
+              <th>Current Value</th>
+              <th>Total Returns</th>
+              <th>Day Change</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="stock-name">
+                  <div class="stock-icon">MF</div>
+                  <div>
+                    <div>Axis Bluechip Fund</div>
+                    <div class="stock-code">Large Cap Fund</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="broker-tag">Angel One</span></td>
+              <td>850 units</td>
+              <td>₹42.75</td>
+              <td>₹45.30</td>
+              <td>₹38,505.00</td>
+              <td class="positive">+₹2,167.50 (+5.97%)</td>
+              <td class="positive">+0.42%</td>
+              <td class="actions-cell">
+                <button class="action-btn">Details</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="stock-name">
+                  <div class="stock-icon">MF</div>
+                  <div>
+                    <div>Mirae Asset Emerging Bluechip</div>
+                    <div class="stock-code">Mid Cap Fund</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="broker-tag">ICICI Direct</span></td>
+              <td>1200 units</td>
+              <td>₹85.40</td>
+              <td>₹92.75</td>
+              <td>₹111,300.00</td>
+              <td class="positive">+₹8,820.00 (+8.61%)</td>
+              <td class="positive">+1.20%</td>
+              <td class="actions-cell">
+                <button class="action-btn">Details</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="tab-content" id="etfs-content">
+        <!-- ETF-specific content would go here -->
+        <table>
+          <thead>
+            <tr>
+              <th>ETF</th>
+              <th>Broker</th>
+              <th>Quantity</th>
+              <th>Avg. Price</th>
+              <th>Current Price</th>
+              <th>Current Value</th>
+              <th>Total Returns</th>
+              <th>Day Change</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="stock-name">
+                  <div class="stock-icon">ETF</div>
+                  <div>
+                    <div>Nippon India ETF Nifty BeES</div>
+                    <div class="stock-code">NSE: NIFTYBEES</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="broker-tag">Zerodha</span></td>
+              <td>200</td>
+              <td>₹185.50</td>
+              <td>₹192.80</td>
+              <td>₹38,560.00</td>
+              <td class="positive">+₹1,460.00 (+3.93%)</td>
+              <td class="positive">+0.35%</td>
+              <td class="actions-cell">
+                <button class="action-btn">Details</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="stock-name">
+                  <div class="stock-icon">ETF</div>
+                  <div>
+                    <div>HDFC Gold ETF</div>
+                    <div class="stock-code">NSE: HDFCMFGETF</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="broker-tag">HDFC Securities</span></td>
+              <td>150</td>
+              <td>₹4,120.75</td>
+              <td>₹4,250.30</td>
+              <td>₹63,754.50</td>
+              <td class="positive">+₹1,942.50 (+3.14%)</td>
+              <td class="positive">+0.52%</td>
+              <td class="actions-cell">
+                <button class="action-btn">Details</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="tab-content" id="bonds-content">
+        <!-- Bonds-specific content would go here -->
+        <table>
+          <thead>
+            <tr>
+              <th>Bond</th>
+              <th>Broker</th>
+              <th>Quantity</th>
+              <th>Face Value</th>
+              <th>Purchase Price</th>
+              <th>Current Price</th>
+              <th>Current Value</th>
+              <th>Yield to Maturity</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="stock-name">
+                  <div class="stock-icon">BND</div>
+                  <div>
+                    <div>7.75% Govt. of India 2035</div>
+                    <div class="stock-code">Government Bond</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="broker-tag">HDFC Securities</span></td>
+              <td>5</td>
+              <td>₹10,000.00</td>
+              <td>₹9,800.00</td>
+              <td>₹9,850.00</td>
+              <td>₹49,250.00</td>
+              <td>7.95%</td>
+              <td class="actions-cell">
+                <button class="action-btn">Details</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="stock-name">
+                  <div class="stock-icon">BND</div>
+                  <div>
+                    <div>8.20% NHAI 2030</div>
+                    <div class="stock-code">Corporate Bond</div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="broker-tag">ICICI Direct</span></td>
+              <td>3</td>
+              <td>₹10,000.00</td>
+              <td>₹10,200.00</td>
+              <td>₹10,350.00</td>
+              <td>₹31,050.00</td>
+              <td>7.85%</td>
+              <td class="actions-cell">
+                <button class="action-btn">Details</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">Recent Transactions</h2>
+      </div>
+      
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Instrument</th>
+            <th>Transaction Type</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total Value</th>
+            <th>Broker</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>05 Apr 2025</td>
+            <td>
+              <div class="stock-name">
+                <div class="stock-icon">HDFC</div>
+                <div>HDFC Bank</div>
+              </div>
+            </td>
+            <td>Buy</td>
+            <td>5</td>
+            <td>₹1,720.25</td>
+            <td>₹8,601.25</td>
+            <td><span class="broker-tag">HDFC Securities</span></td>
+          </tr>
+          <tr>
+            <td>03 Apr 2025</td>
+            <td>
+              <div class="stock-name">
+                <div class="stock-icon">MF</div>
+                <div>Axis Bluechip Fund</div>
+              </div>
+            </td>
+            <td>SIP</td>
+            <td>110.38 units</td>
+            <td>₹45.30</td>
+            <td>₹5,000.00</td>
+            <td><span class="broker-tag">Angel One</span></td>
+          </tr>
+          <tr>
+            <td>28 Mar 2025</td>
+            <td>
+              <div class="stock-name">
+                <div class="stock-icon">TCS</div>
+                <div>Tata Consultancy Services</div>
+              </div>
+            </td>
+            <td>Sell</td>
+            <td>2</td>
+            <td>₹3,505.50</td>
+            <td>₹7,011.00</td>
+            <td><span class="broker-tag">Zerodha</span></td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <div class="pagination">
+        <div class="page-item"><button class="page-link">Previous</button></div>
+        <div class="page-item"><button class="page-link active">1</button></div>
+        <div class="page-item"><button class="page-link">2</button></div>
+        <div class="page-item"><button class="page-link">3</button></div>
+        <div class="page-item"><button class="page-link">Next</button></div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="../js/portfolio.js"></script>
+</body>
+</html>

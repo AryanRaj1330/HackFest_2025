@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InvestTrack - Dashboard</title>
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <span class="logo-icon">📈</span> InvestTrack
+    </div>
+    
+    <ul class="nav-menu">
+      <li><a href="dashboard.html" class="active">Dashboard</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="watchlist.html">Watchlist</a></li>
+      <li><a href="reports.html">Reports</a></li>
+    </ul>
+    
+    <div class="navbar-right">
+      <div class="nav-item notifications">
+        <span>🔔</span>
+      </div>
+      <div class="nav-item user-profile">
+        <div class="user-avatar">JD</div>
+        <span>John Doe</span>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="container">
+    <div class="dashboard-header">
+      <h1 class="dashboard-title">Connect Your Accounts</h1>
+      <div class="dashboard-actions">
+        <button class="btn" id="view-portfolio-btn">View Portfolio</button>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">Linked Demat Accounts</h2>
+      </div>
+      
+      <div class="card-content">
+        <p>Link your demat accounts to view all your investments in one place.</p>
+      </div>
+      
+      <div class="broker-list">
+        <!-- Angel One -->
+        <div class="broker-card">
+          <div class="broker-logo">🔰</div>
+          <h3 class="broker-name">Angel One</h3>
+          <p>Demat & Trading</p>
+          <span class="broker-status status-connected">Connected</span>
+        </div>
+        
+        <!-- Zerodha -->
+        <div class="broker-card">
+          <div class="broker-logo">🔶</div>
+          <h3 class="broker-name">Zerodha</h3>
+          <p>Demat & Trading</p>
+          <span class="broker-status status-not-connected">Not Connected</span>
+        </div>
+        
+        <!-- HDFC Securities -->
+        <div class="broker-card">
+          <div class="broker-logo">🏦</div>
+          <h3 class="broker-name">HDFC Securities</h3>
+          <p>Demat & Trading</p>
+          <span class="broker-status status-not-connected">Not Connected</span>
+        </div>
+        
+        <!-- ICICI Direct -->
+        <div class="broker-card">
+          <div class="broker-logo">💼</div>
+          <h3 class="broker-name">ICICI Direct</h3>
+          <p>Demat & Trading</p>
+          <span class="broker-status status-not-connected">Not Connected</span>
+        </div>
+        
+        <!-- Upstox -->
+        <div class="broker-card">
+          <div class="broker-logo">📊</div>
+          <h3 class="broker-name">Upstox</h3>
+          <p>Demat & Trading</p>
+          <span class="broker-status status-not-connected">Not Connected</span>
+        </div>
+        
+        <!-- Add New -->
+        <div class="broker-card add-broker" id="add-broker-btn">
+          <div class="add-icon">+</div>
+          <p>Add New Broker</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">Recent Activities</h2>
+      </div>
+      
+      <div class="card-content">
+        <p>No recent activities to show. Connect your accounts to see your investment activities.</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Add Broker Modal -->
+  <div class="modal" id="broker-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Connect Broker Account</h2>
+        <span class="close-btn" id="close-modal">&times;</span>
+      </div>
+      
+      <form id="broker-form">
+        <div class="form-group">
+          <label for="broker-select">Select Broker</label>
+          <select id="broker-select">
+            <option value="">Select a broker</option>
+            <option value="zerodha">Zerodha</option>
+            <option value="angelone">Angel One</option>
+            <option value="hdfc">HDFC Securities</option>
+            <option value="icici">ICICI Direct</option>
+            <option value="upstox">Upstox</option>
+            <option value="groww">Groww</option>
+            <option value="kotak">Kotak Securities</option>
+            <option value="5paisa">5Paisa</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="client-id">Client ID / User ID</label>
+          <input type="text" id="client-id" placeholder="Enter your client ID">
+        </div>
+        
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Enter your password">
+        </div>
+        
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" id="cancel-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Connect</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/dashboard.js"></script>
+</body>
+</html>

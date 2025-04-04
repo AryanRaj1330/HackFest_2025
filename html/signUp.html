@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InvestTrack - Sign Up</title>
+  <link rel="stylesheet" href="../css/signUp.css">
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <div class="logo-icon">📈</div>
+      <h1>InvestTrack</h1>
+    </div>
+    
+    <form id="signup-form">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" required>
+        <div class="error-message" id="email-error">Please enter a valid email</div>
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" required>
+        <div class="error-message" id="password-error">Password must be at least 6 characters</div>
+      </div>
+      
+      <div class="form-group">
+        <label for="confirm-password">Confirm Password</label>
+        <input type="password" id="confirm-password" required>
+        <div class="error-message" id="confirm-password-error">Passwords do not match</div>
+      </div>
+      
+      <button type="submit" class="btn">Sign Up</button>
+
+      <!-- Google Signup Button -->
+      <button type="button" class="btn google-btn" id="google-signup">
+        <img src="https://tse3.mm.bing.net/th?id=OIP.qfsXyQjxkzq5AcLD_RzcRAHaHg&w=474&h=474&c=7" alt="Google Logo"> Sign Up with Google
+      </button>
+
+      <div class="login-link">
+        Already have an account? <a href="login.html">Login</a>
+      </div>
+    </form>
+  </div>
+
+  <script type="module" src="../js/signUp.js"></script>
+</body>
+</html>

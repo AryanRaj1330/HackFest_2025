@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InvestTrack - Broker Authentication</title>
+  <link rel="stylesheet" href="../css/broker.css">
+</head>
+<body>
+  <div class="container">
+    <div class="broker-header">
+      <div class="broker-logo" id="broker-icon">🔰</div>
+      <div class="broker-info">
+        <h2 id="broker-name">Angel One</h2>
+        <p>Connect your demat account</p>
+      </div>
+    </div>
+    
+    <form id="broker-auth-form">
+      <div class="form-group">
+        <label for="username">Email / Client ID</label>
+        <input type="text" id="username" value="" disabled>
+        <p style="font-size: 12px; color: #666; margin-top: 5px;">Using the same email from your InvestTrack account</p>
+      </div>
+      
+      <div class="form-group">
+        <label for="broker-password">Broker Password</label>
+        <input type="password" id="broker-password" placeholder="Enter your broker account password" required>
+        <div class="error-message" id="password-error">Password is required</div>
+      </div>
+      
+      <div class="form-group">
+        <label for="pin">PIN / TPIN (if applicable)</label>
+        <input type="password" id="pin" placeholder="Enter PIN if required by your broker">
+      </div>
+      
+      <div class="save-credentials">
+        <input type="checkbox" id="save-creds">
+        <label for="save-creds">Save credentials for quick access (secure)</label>
+      </div>
+      
+      <button type="submit" class="btn">Connect Account</button>
+      <button type="button" class="btn btn-secondary" id="cancel-btn">Cancel</button>
+    </form>
+    
+    <div class="info-text">
+      By connecting your account, you authorize InvestTrack to retrieve your investment data for display purposes only. <a href="#">Learn more</a>
+    </div>
+  </div>
+
+  <script src="../js/broker.js"></script>
+</body>
+</html>

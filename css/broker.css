@@ -1,0 +1,149 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  body {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    width: 450px;
+    padding: 40px;
+    animation: fadeIn 0.5s ease-out;
+  }
+  
+  .broker-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  
+  .broker-logo {
+    width: 60px;
+    height: 60px;
+    background-color: #f5f7fa;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    font-size: 28px;
+  }
+  
+  .broker-info h2 {
+    color: #2a5298;
+    font-size: 22px;
+    margin-bottom: 5px;
+  }
+  
+  .broker-info p {
+    color: #666;
+    font-size: 14px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border 0.3s;
+  }
+  
+  .form-group input:focus {
+    border-color: #2a5298;
+    outline: none;
+  }
+  
+  .form-group input:disabled {
+    background-color: #f5f7fa;
+    cursor: not-allowed;
+  }
+  
+  .error-message {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-top: 5px;
+    display: none;
+  }
+  
+  .btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #2a5298;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .btn:hover {
+    background-color: #1e3c72;
+  }
+  
+  .btn-secondary {
+    background-color: transparent;
+    color: #2a5298;
+    border: 1px solid #2a5298;
+    margin-top: 10px;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #f5f7fa;
+  }
+  
+  .info-text {
+    font-size: 13px;
+    color: #666;
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .info-text a {
+    color: #2a5298;
+    text-decoration: none;
+  }
+  
+  .info-text a:hover {
+    text-decoration: underline;
+  }
+  
+  .save-credentials {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .save-credentials input {
+    margin-right: 10px;
+  }
+  
+  /* Animation */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
